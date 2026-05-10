@@ -206,22 +206,27 @@
 
   /**
    * Navmenu Scrollspy
+   * FIX: Find the best active section first, then apply .active once.
+   * The original logic removed .active inside the loop which caused no link to stay highlighted.
    */
   let navmenulinks = document.querySelectorAll('.navmenu a');
 
   function navmenuScrollspy() {
+    let position = window.scrollY + 200;
+    let activeLink = null;
+
     navmenulinks.forEach(navmenulink => {
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
+        activeLink = navmenulink;
       }
-    })
+    });
+
+    // Remove .active from all links, then set it only on the matching one
+    document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+    if (activeLink) activeLink.classList.add('active');
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);

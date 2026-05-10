@@ -20,8 +20,30 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* ─── Progress bars ─────────────────────────── */
-    .progress-bar { background-color: #149ddd; }
+    /* ─── Nav active link — highlight au scroll ─────
+       FIX 2: Force active nav link to white + bold so it is
+       clearly visible when scrollspy sets the .active class   */
+    #header #navmenu a.active {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+    #header #navmenu a.active .navicon {
+      color: #149ddd !important;
+    }
+    #header #navmenu li {
+      position: relative;
+    }
+    #header #navmenu a.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 70%;
+      background: #149ddd;
+      border-radius: 0 4px 4px 0;
+    }
 
     /* ─── Collapsible toggle button ─────────────── */
     .section-toggle {
@@ -739,30 +761,33 @@
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
             <div class="contact-card">
               <h5 class="fw-bold mb-4" style="color:#173b6c;">Send me a message</h5>
-              <div class="row gy-3">
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Your Name</label>
-                  <input type="text" id="c-name" class="form-control" placeholder="Augustin YAMPAYE">
+              <!-- FIX 1: Replaced mailto sendMail() with a Formspree <form> so messages are actually delivered -->
+              <form action="https://formspree.io/f/xpqbojeb" method="POST">
+                <div class="row gy-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Your Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Augustin YAMPAYE" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold">Your Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="you@email.com" required>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">Subject</label>
+                    <input type="text" name="subject" class="form-control" placeholder="Subject">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label fw-semibold">Message</label>
+                    <textarea name="message" class="form-control" rows="5" placeholder="Your message..." required></textarea>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn w-100 fw-bold py-3"
+                      style="background:linear-gradient(135deg,#149ddd,#0d6fa8);color:#fff;border-radius:8px;border:none;font-size:1rem;">
+                      <i class="bi bi-send me-2"></i>Send Message
+                    </button>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold">Your Email</label>
-                  <input type="email" id="c-email" class="form-control" placeholder="you@email.com">
-                </div>
-                <div class="col-12">
-                  <label class="form-label fw-semibold">Subject</label>
-                  <input type="text" id="c-subject" class="form-control" placeholder="Subject">
-                </div>
-                <div class="col-12">
-                  <label class="form-label fw-semibold">Message</label>
-                  <textarea id="c-message" class="form-control" rows="5" placeholder="Your message..."></textarea>
-                </div>
-                <div class="col-12">
-                  <button onclick="sendMail()" class="btn w-100 fw-bold py-3"
-                    style="background:linear-gradient(135deg,#149ddd,#0d6fa8);color:#fff;border-radius:8px;border:none;font-size:1rem;">
-                    <i class="bi bi-send me-2"></i>Send Message
-                  </button>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
 
