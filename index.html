@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portfolio Luc_ISENGWE_NTOZI</title>
+  <meta name="description" content="Portfolio of Luc ISENGWE NTOZI — Pentester & SOC Analyst, Master's student in Cybersecurity at AIMS Senegal">
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/favicon_io/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* ─── Progress bars ─────────────────────────── */
+    .progress-bar { background-color: #149ddd; }
+
+    /* ─── Collapsible toggle button ─────────────── */
+    .section-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 10px; padding: 8px 22px;
+      border: 2px solid #149ddd; border-radius: 50px;
+      background: transparent; color: #149ddd;
+      font-size: .88rem; font-weight: 600; cursor: pointer;
+      transition: all .22s;
+    }
+    .section-toggle:hover { background: #149ddd; color: #fff; }
+    .section-toggle .toggle-icon { transition: transform .3s; }
+    .section-toggle.open .toggle-icon { transform: rotate(180deg); }
+
+    /* Collapsible content wrapper with smooth animation */
+    .collapsible-body {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height .45s ease, opacity .35s ease;
+    }
+    .collapsible-body.open {
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    /* ─── Skill tags ─────────────────────────────── */
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+    .skill-tag {
+      background: #e8f4fd; color: #1565c0; border: 1px solid #bee3f8;
+      border-radius: 20px; padding: 5px 15px; font-size: .84rem; font-weight: 500;
+      transition: all .2s;
+    }
+    .skill-tag:hover { background: #149ddd; color: #fff; border-color: #149ddd; }
+
+    /* ─── Certification cards ────────────────────── */
+    .cert-card {
+      background: #fff; border-radius: 14px; padding: 24px 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08); border-left: 4px solid #149ddd;
+      transition: transform .25s, box-shadow .25s; height: 100%;
+    }
+    .cert-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,.13); }
+    .cert-card.upcoming { border-left-color: #ccc; opacity: .72; }
+    .cert-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: linear-gradient(135deg, #149ddd, #0d6fa8);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+    }
+    .cert-icon.gray { background: linear-gradient(135deg, #aaa, #888); }
+    .cert-icon i { color: #fff; font-size: 1.3rem; }
+    .cert-title  { font-size: 1rem; font-weight: 700; color: #173b6c; margin-bottom: 4px; }
+    .cert-issuer { font-size: .85rem; color: #149ddd; font-weight: 600; }
+    .cert-date   { font-size: .8rem; color: #888; margin-top: 6px; }
+    .cert-badge  {
+      display: inline-block; margin-top: 8px; padding: 3px 12px;
+      border-radius: 20px; font-size: .75rem; font-weight: 600;
+      background: #e8f6fd; color: #149ddd;
+    }
+    .cert-badge.gray { background: #f5f5f5; color: #888; }
+
+    /* ─── Language cards ─────────────────────────── */
+    .lang-card {
+      background: #fff; border-radius: 14px; padding: 24px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      transition: transform .25s, box-shadow .25s; height: 100%;
+    }
+    .lang-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,.13); }
+    .lang-flag { font-size: 2.2rem; margin-bottom: 10px; }
+    .lang-name { font-size: 1.1rem; font-weight: 700; color: #173b6c; margin-bottom: 6px; }
+    .lang-level {
+      display: inline-block; padding: 3px 12px; border-radius: 20px;
+      font-size: .75rem; font-weight: 700; letter-spacing: .05em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .level-native   { background: #e3f2fd; color: #1565c0; }
+    .level-fluent   { background: #e8f5e9; color: #2e7d32; }
+    .lang-stars { color: #f5a623; font-size: 1rem; letter-spacing: 2px; }
+
+    /* ─── Project cards ──────────────────────────── */
+    .project-card {
+      background: #fff; border-radius: 14px; padding: 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+      border-top: 4px solid #149ddd;
+      transition: transform .25s, box-shadow .25s; height: 100%;
+    }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,.13); }
+    .project-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, #149ddd, #0d6fa8);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+    }
+    .project-icon i { color: #fff; font-size: 1.4rem; }
+    .project-title { font-size: 1.05rem; font-weight: 700; color: #173b6c; margin-bottom: 6px; }
+    .project-tech  {
+      display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0;
+    }
+    .project-tech span {
+      background: #f0f4ff; color: #3b5bdb; border-radius: 20px;
+      padding: 3px 11px; font-size: .75rem; font-weight: 600;
+    }
+    .project-links { display: flex; gap: 10px; margin-top: 14px; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .83rem; font-weight: 600; color: #149ddd;
+      text-decoration: none; transition: color .2s;
+    }
+    .project-link:hover { color: #0d6fa8; }
+
+    /* ─── CV section ─────────────────────────────── */
+    #cv {
+      background: linear-gradient(135deg, #0d2b57 0%, #1763a6 55%, #149ddd 100%);
+      padding: 72px 0;
+    }
+    #cv h2    { color: #fff; font-weight: 700; margin-bottom: 10px; }
+    #cv .sub  { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 36px; }
+    #cv .note { color: rgba(255,255,255,.4); font-size: .8rem; margin-top: 24px; }
+    #cv code  { background: rgba(255,255,255,.1); padding: 2px 7px; border-radius: 4px; }
+
+    .cv-card {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 18px; padding: 32px 28px; text-align: center;
+      backdrop-filter: blur(6px);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .cv-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+    .cv-card-flag  { font-size: 2.8rem; margin-bottom: 12px; }
+    .cv-card-title { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .cv-card-lang  {
+      font-size: .85rem; color: rgba(255,255,255,.65); font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .cv-card-desc  { font-size: .88rem; color: rgba(255,255,255,.75); margin-bottom: 22px; line-height: 1.5; }
+
+    /* Single preview button */
+    .cv-preview-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 30px; border-radius: 50px; font-size: .95rem; font-weight: 700;
+      background: #fff; color: #173b6c; border: none; cursor: pointer;
+      transition: all .22s;
+    }
+    .cv-preview-btn:hover { background: rgba(255,255,255,.85); transform: scale(1.04); }
+
+    /* ─── PDF preview modal ──────────────────────── */
+    .cv-modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(10,20,40,.88); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 16px;
+    }
+    .cv-modal-overlay.open { display: flex; }
+    .cv-modal-box {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      width: 100%; max-width: 880px; height: 92vh;
+      display: flex; flex-direction: column;
+      box-shadow: 0 24px 80px rgba(0,0,0,.5);
+      animation: modalIn .25s ease;
+    }
+    @keyframes modalIn {
+      from { transform: scale(.96); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    .cv-modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px; background: #173b6c; flex-shrink: 0;
+    }
+    .cv-modal-title { color: #fff; font-weight: 700; font-size: 1rem; }
+    .cv-modal-actions { display: flex; gap: 8px; }
+    .cv-modal-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 18px; border-radius: 50px; font-size: .85rem; font-weight: 600;
+      cursor: pointer; transition: all .2s; border: none; text-decoration: none;
+    }
+    .cv-modal-btn.download { background: #149ddd; color: #fff; }
+    .cv-modal-btn.download:hover { background: #0d6fa8; color: #fff; }
+    .cv-modal-btn.close { background: rgba(255,255,255,.15); color: #fff; }
+    .cv-modal-btn.close:hover { background: rgba(255,255,255,.3); }
+    .cv-modal-body { flex: 1; overflow: hidden; }
+    .cv-modal-body iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ─── Contact card ───────────────────────────── */
+    .contact-card {
+      background: #fff; border-radius: 14px; padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    /* ─── Certification photo cards ─────────────── */
+    .cert-photo-card {
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      transition: transform .25s, box-shadow .25s;
+      background: #fff;
+    }
+    .cert-photo-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,.15); }
+    .cert-photo-card img {
+      width: 100%; height: 220px; object-fit: cover; display: block;
+    }
+    /* Placeholder shown when image is missing */
+    .cert-placeholder {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 220px; padding: 20px; text-align: center; background: #f4fafd;
+      border: 2px dashed #bee3f8; border-radius: 14px; gap: 8px;
+    }
+    .cert-placeholder i { font-size: 2rem; color: #149ddd; }
+    .cert-placeholder span { font-weight: 700; color: #173b6c; font-size: .95rem; }
+    .cert-placeholder small { color: #149ddd; font-weight: 600; font-size: .8rem; }
+    .cert-placeholder em { color: #aaa; font-size: .75rem; }
+
+    /* ─── Nav active link — more visible highlight ── */
+    #navmenu a.active {
+      color: #fff !important;
+      background: rgba(20, 157, 221, 0.18);
+      border-left: 3px solid #149ddd;
+      padding-left: 13px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <!-- SIDEBAR / HEADER -->
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="assets/img/my-profile-img.jpg" alt="Luc ISENGWE NTOZI" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Luc ISENGWE NTOZI</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="https://www.linkedin.com/in/luc-isengwe-ntozi" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+      <a href="https://wa.me/243977653894" class="whatsapp" target="_blank"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://github.com/luc-isengwe" class="github" target="_blank"><i class="bi bi-github"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero"           class="active"><i class="bi bi-house navicon"></i> Home</a></li>
+        <li><a href="#about">          <i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#skills">         <i class="bi bi-code-slash navicon"></i> Skills</a></li>
+        <li><a href="#resume">         <i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#languages">      <i class="bi bi-translate navicon"></i> Languages</a></li>
+        <li><a href="#projects">       <i class="bi bi-folder2-open navicon"></i> Projects</a></li>
+        <li><a href="#certifications"> <i class="bi bi-patch-check navicon"></i> Certifications</a></li>
+        <li><a href="#cv">             <i class="bi bi-file-earmark-person navicon"></i> CV</a></li>
+        <li><a href="#contact">        <i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Luc ISENGWE NTOZI</h2>
+        <p>I'm <span class="typed" data-typed-items="Pentester,SOC Analyst,Cybersecurity Researcher,Freelancer">Pentester</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Master's student in Cyber Security with strong foundations in Python, Machine Learning, Computer Vision, and engineering systems. Passionate about information security, vulnerability assessment, network protection, and intelligent threat detection.</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-4">
+            <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt="Luc ISENGWE NTOZI" style="border-radius:12px;">
+          </div>
+          <div class="col-lg-8 content">
+            <h2>Pentester &amp; SOC Analyst</h2>
+            <p class="fst-italic py-3">Based in Mbour, Senegal — passionate about cybersecurity, mathematics, and building resilient systems.</p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone (SN):</strong> <span>+221 78 011 69 80</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone (DRC):</strong> <span>+243 977 653 894</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Mbour, Senegal</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master's (in progress)</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>isengwe.n.luc@aims-senegal.org</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Alt Email:</strong> <span>isenluc001@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS — always visible -->
+    <section id="skills" class="skills section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Skills</h2>
+      </div>
+
+      <div id="skills-body">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="row skills-content skills-animation mb-5">
+            <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill"><span>Python</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress">
+                <span class="skill"><span>LaTeX</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress">
+                <span class="skill"><span>HTML / CSS</span> <i class="val">55%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress">
+                <span class="skill"><span>Machine Learning / Computer Vision</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="progress">
+                <span class="skill"><span>Office Suite</span> <i class="val">90%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress">
+                <span class="skill"><span>Cisco Packet Tracer / Networking</span> <i class="val">60%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <div class="progress">
+                <span class="skill"><span>Linux / Bash</span> <i class="val">65%</i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cybersecurity tool tags -->
+          <div class="row">
+            <div class="col-12">
+              <h5 class="fw-bold mb-2" style="color:#173b6c;">
+                <i class="bi bi-shield-lock me-2" style="color:#149ddd;"></i>Cybersecurity Tools &amp; Domains
+              </h5>
+              <div class="skill-tags">
+                <span class="skill-tag">Kali Linux</span>
+                <span class="skill-tag">Metasploit</span>
+                <span class="skill-tag">Nmap</span>
+                <span class="skill-tag">Wireshark</span>
+                <span class="skill-tag">Burp Suite</span>
+                <span class="skill-tag">Penetration Testing</span>
+                <span class="skill-tag">Vulnerability Assessment</span>
+                <span class="skill-tag">OSINT</span>
+                <span class="skill-tag">Network Security</span>
+                <span class="skill-tag">Cryptography</span>
+                <span class="skill-tag">SOC Analysis</span>
+                <span class="skill-tag">Threat Detection</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume" class="resume section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Resume</h2>
+      </div>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="resume-title">Summary</h3>
+            <div class="resume-item pb-0">
+              <h4>Luc ISENGWE NTOZI</h4>
+              <ul>
+                <li>Km 2 routes de Joal (Centre IRD, Mbour), Senegal</li>
+                <li>(+221) 78 011 69 80 &nbsp;|&nbsp; (+243) 977 653 894</li>
+                <li>isenluc001@gmail.com &nbsp;|&nbsp; isengwe.n.luc@aims-senegal.org</li>
+              </ul>
+            </div>
+
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Master's in Cyber Security <em>(in progress)</em></h4>
+              <h5>Oct 2025 – March 2027</h5>
+              <p><em><a href="https://aims-senegal.org/fr/" target="_blank">African Institute for Mathematical Sciences (AIMS), Senegal <i class="bi bi-box-arrow-up-right"></i></a></em></p>
+              <p>Cryptography, network security, machine learning for threat detection, and applied mathematics in cybersecurity.</p>
+            </div>
+            <div class="resume-item">
+              <h4>Bachelor's in Civil Engineering</h4>
+              <h5>Oct 2019 – Oct 2023</h5>
+              <p><em><a href="https://unisapientia.net/" target="_blank">Université Catholique La Sapientia De Goma, DRC <i class="bi bi-box-arrow-up-right"></i></a></em></p>
+              <p>Structural design, construction techniques, site supervision, and systems analysis.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Lecturer Assistant</h4>
+              <h5>2024 – Present</h5>
+              <p><em><a href="https://unimrdc.com/" target="_blank">Université des Martyrs du Congo, Goma, DRC <i class="bi bi-box-arrow-up-right"></i></a></em></p>
+              <ul>
+                <li>Assist professors in preparing and delivering lectures and practical sessions</li>
+                <li>Support students with academic guidance; grade assignments with fairness</li>
+                <li>Participate in research data collection and analysis</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>Project Manager &amp; Head of Engineering Department</h4>
+              <h5>2019 – Present</h5>
+              <p><em>Industrial Equipment Design &amp; Project Management, Goma, DRC</em></p>
+              <ul>
+                <li>Led design of industrial bakery ovens and automated mixing systems</li>
+                <li>Supervised electrical and mechanical systems for safety and reliability</li>
+                <li>Applied risk management to improve operational reliability</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    </section>
+
+    <!-- LANGUAGES — directly visible, placed after Resume -->
+    <section id="languages" class="section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Languages</h2>
+        <p>I operate comfortably across multiple languages</p>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="lang-card text-center">
+              <div class="lang-flag">🇬🇧</div>
+              <div class="lang-name">English</div>
+              <span class="lang-level level-fluent">Fluent</span>
+              <div class="lang-stars">★★★★☆</div>
+              <p class="small text-muted mt-2 mb-0">Academic and professional — reading, writing, presentations</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="lang-card text-center">
+              <div class="lang-flag">🇫🇷</div>
+              <div class="lang-name">French</div>
+              <span class="lang-level level-fluent">Fluent</span>
+              <div class="lang-stars">★★★★☆</div>
+              <p class="small text-muted mt-2 mb-0">Academic and professional — reading, writing, presentations</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="lang-card text-center">
+              <div class="lang-flag">🇨🇩</div>
+              <div class="lang-name">Swahili</div>
+              <span class="lang-level level-native">Native</span>
+              <div class="lang-stars">★★★★★</div>
+              <p class="small text-muted mt-2 mb-0">Native language, North Kivu</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ######################################### PROJECTS ############################################# -->
+    <section id="projects" class="section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Projects</h2>
+        
+        <button class="section-toggle" onclick="toggleSection('projects-body', this)">
+          <i class="bi bi-eye"></i> Show Projects
+          <i class="bi bi-chevron-down toggle-icon"></i>
+        </button>
+      </div>
+
+      <div id="projects-body" class="collapsible-body">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="project-card">
+                <div class="project-icon"><i class="bi bi-shield-exclamation"></i></div>
+                <div class="project-title">Scraping data</div>
+                <p class="small text-muted">Development of an intelligent scraping application capable of collecting from platforms such as Instagram, Facebook, and YouTube. The system automates data extraction for digital monitoring.</p>
+                <div class="project-tech">
+                  <span>Python</span><span>Streamlit</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/luc-isengwe/App_one" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="project-card">
+                <div class="project-icon"><i class="bi bi-robot"></i></div>
+                <div class="project-title">Traffic object Detection</div>
+                <p class="small text-muted">Developed a traffic object detection system using Computer Vision and Deep Learning techniques to identify and track vehicles, people, bikes,etc... in real time.</p>
+                <div class="project-tech">
+                  <span>Python</span><span>OpenCV</span><span>TensorFlow</span><span>YOLO</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/luc-isengwe/traffic_object_detection/tree/master" class="project-link" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="project-card">
+                <div class="project-icon"><i class="bi bi-lock"></i></div>
+                <div class="project-title">SecureTalk</div>
+                <p class="small text-muted">SecureTalk is a secure messaging application designed to demonstrate the fundamentals of hybrid encryption using RSA and AES algorithms. The project includes public key authentication, digital signatures, encrypted local chat history with AES-GCM, and secure message exchange through Java socket communication.</p>
+                <div class="project-tech">
+                  <span>JavaFX</span><span>Java</span><span>javax.crypto</span><span>java.security</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="project-card">
+                <div class="project-icon"><i class="bi bi-building"></i></div>
+                <div class="project-title">Industrial Oven Control System</div>
+                <p class="small text-muted">Engineering project automated control system for industrial bakery ovens including temperature regulation and safety shutdown mechanisms.</p>
+                <div class="project-tech">
+                  <span>Electrical Engineering</span><span>Automation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="project-card">
+                <div class="project-icon"><i class="bi bi-diagram-2"></i></div>
+                <div class="project-title">Network Topology Lab (CCNA)</div>
+                <p class="small text-muted">Designed and simulated enterprise-level network topologies including VLANs, routing protocols (OSPF, RIP), and network segmentation using Cisco Packet Tracer.</p>
+                <div class="project-tech">
+                  <span>Packet Tracer</span><span>OSPF</span><span>VLANs</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS — collapsible, photos shown when opened -->
+    <section id="certifications" class="section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Certifications</h2>
+        <p>Click to view my certification photos/pdf</p>
+        <button class="section-toggle" onclick="toggleSection('cert-body', this)">
+          <i class="bi bi-eye"></i> Show Certifications
+          <i class="bi bi-chevron-down toggle-icon"></i>
+        </button>
+      </div>
+
+      <div id="cert-body" class="collapsible-body">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+
+            <!-- ################################################### CERTIFICATIONS ################################################## -->
+
+            <a href="assets/img/certifications/Supervised_Machine_Learning.pdf" target="_blank">Supervised_Machine_Learning(PDF)</a>
+            <a href="assets/img/certifications/AppSec_Practitioner.pdf" target="_blank">AppSec_Practitioner(PDF)</a>
+            <a href="assets/img/certifications/Certified_Blue_Team_Practitioner.pdf" target="_blank">Certified_Blue_Team_Practitioner(PDF)</a>
+            <a href="assets/img/certifications/Cloud_Security_Practitioner.pdf" target="_blank">Cloud_Security_Practitioner(PDF)</a>
+
+            <!--######################################### FOR PNG CERTIFICATIONS ########################################################-->
+            <!--<div class="col-lg-4 col-md-6">
+              <div class="cert-photo-card">
+                <img src="assets/img/certifications/cert_ibm_python.jpg"
+                     alt="Python for Data Science — IBM"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="cert-placeholder">
+                  <i class="bi bi-cpu"></i>
+                  <span>Python for Data Science</span>
+                  <small>IBM / Coursera · 2024</small>
+                  <em>Add image: assets/img/certifications/cert_ibm_python.jpg</em>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="cert-photo-card">
+                <img src="assets/img/certifications/cert_cisco_ccna.jpg"
+                     alt="CCNAv7 — Cisco"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="cert-placeholder">
+                  <i class="bi bi-diagram-3"></i>
+                  <span>CCNAv7: Introduction to Networks</span>
+                  <small>Cisco Networking Academy · 2023</small>
+                  <em>Add image: assets/img/certifications/cert_cisco_ccna.jpg</em>
+                </div>
+              </div>
+            </div>-->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #######################################CV PREVIEW & DOWNLOADING ##############################################################################-->
+    <section id="cv">
+      <div class="container" data-aos="fade-up">
+        <div class="text-center mb-5">
+          <h2><i class="bi bi-file-earmark-person me-2"></i>Curriculum Vitae</h2>
+          <p class="sub">Click to preview</p>
+        </div>
+
+        <div class="row gy-4 justify-content-center">
+
+          <!-- CV English -->
+          <div class="col-lg-4 col-md-6">
+            <div class="cv-card">
+              <div class="cv-card-flag">🇬🇧</div>
+              <div class="cv-card-title">Curriculum Vitae</div>
+              <div class="cv-card-lang">English Version</div>
+              <div class="cv-card-desc">Full CV — education, experience, skills &amp; certifications</div>
+              <!-- Opens PDF in a new browser tab and user can download from there -->
+              <a href="assets/cv/CV_Luc_ISENGWE_EN.pdf" target="_blank" class="cv-preview-btn">
+                <i class="bi bi-eye"></i> Preview CV
+              </a>
+            </div>
+          </div>
+
+          <!-- CV French -->
+          <div class="col-lg-4 col-md-6">
+            <div class="cv-card">
+              <div class="cv-card-flag">🇫🇷</div>
+              <div class="cv-card-title">Curriculum Vitae</div>
+              <div class="cv-card-lang">Version Française</div>
+              <div class="cv-card-desc">CV complet — formation, expérience, compétences &amp; certifications</div>
+              <!-- Opens PDF in a new browser tab and user can download from there -->
+              <a href="assets/cv/CV_Luc_ISENGWE_FR.pdf" target="_blank" class="cv-preview-btn">
+                <i class="bi bi-eye"></i> Aperçu CV
+              </a>
+            </div>
+          </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section light-background">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+      </div>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-5">
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div><h3>Address</h3><p>Km 2 routes de Joal (Centre IRD, Mbour), Senegal</p></div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Phone</h3>
+                  <p>+221 78 011 69 80 (Senegal)</p>
+                  <p>+243 977 653 894 (DRC)</p>
+                </div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p><a href="mailto:isengwe.n.luc@aims-senegal.org" style="color:inherit;">isengwe.n.luc@aims-senegal.org</a></p>
+                  <p><a href="mailto:isenluc001@gmail.com" style="color:inherit;">isenluc001@gmail.com</a></p>
+                </div>
+              </div>
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                <i class="bi bi-globe flex-shrink-0"></i>
+                <div>
+                  <h3>Social</h3>
+                  <p>
+                    <a href="https://www.linkedin.com/in/luc-isengwe-ntozi" target="_blank" style="color:#149ddd;">LinkedIn</a> &nbsp;|&nbsp;
+                    <a href="https://github.com/luc-isengwe" target="_blank" style="color:#149ddd;">GitHub</a> &nbsp;|&nbsp;
+                    <a href="https://wa.me/243977653894" target="_blank" style="color:#149ddd;">WhatsApp</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-card">
+              <h5 class="fw-bold mb-4" style="color:#173b6c;">Send me a message</h5>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Your Name</label>
+                  <input type="text" id="c-name" class="form-control" placeholder="Augustin YAMPAYE">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-semibold">Your Email</label>
+                  <input type="email" id="c-email" class="form-control" placeholder="you@email.com">
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold">Subject</label>
+                  <input type="text" id="c-subject" class="form-control" placeholder="Subject">
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-semibold">Message</label>
+                  <textarea id="c-message" class="form-control" rows="5" placeholder="Your message..."></textarea>
+                </div>
+                <div class="col-12">
+                  <button onclick="sendMail()" class="btn w-100 fw-bold py-3"
+                    style="background:linear-gradient(135deg,#149ddd,#0d6fa8);color:#fff;border-radius:8px;border:none;font-size:1rem;">
+                    <i class="bi bi-send me-2"></i>Send Message
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <strong>Luc ISENGWE NTOZI</strong> — Portfolio</p>
+        <p class="small text-muted">Pentester · SOC Analyst</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    /* ── Collapsible sections (Projects & Certifications) ─── */
+    function toggleSection(id, btn) {
+      const body = document.getElementById(id);
+      const isOpen = body.classList.toggle('open');
+      btn.innerHTML = isOpen
+        ? `<i class="bi bi-eye-slash"></i> Hide <i class="bi bi-chevron-down toggle-icon" style="transform:rotate(180deg);transition:transform .3s"></i>`
+        : `<i class="bi bi-eye"></i> Show <i class="bi bi-chevron-down toggle-icon"></i>`;
+    }
+
+    /* ── Animate progress bars on page load ─────────────── */
+    /* Skills are always visible so Waypoints fires correctly,
+       but we also force it here as a safety net. */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.progress-bar').forEach(bar => {
+        bar.style.width = bar.getAttribute('aria-valuenow') + '%';
+      });
+    });
+
+    /* ── Contact mailto ──────────────────────────────────── */
+    function sendMail() {
+      const name    = document.getElementById('c-name').value.trim();
+      const email   = document.getElementById('c-email').value.trim();
+      const subject = document.getElementById('c-subject').value.trim();
+      const message = document.getElementById('c-message').value.trim();
+      if (!name || !message) { alert('Please fill in your name and message.'); return; }
+      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+      window.location.href = `mailto:isenluc001@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio')}&body=${encodeURIComponent(body)}`;
+    }
+  </script>
+
+</body>
+</html>
